@@ -20,6 +20,11 @@ class Solution {
 }};
 
 
+This approach is called the Sliding Window Technique 
+Instead of calculating the sum from scratch for every possible contiguous block (which would take O(n^2)times, 
+This technique optimizes the process to (O(n)) time complexity:
+Initial Window: The first for loop calculates the sum of the first k elements (arr[0] to arr[k-1]). This establishes your baseline window.Sliding the Window: The second for loop slides this window one step to the right at a time.
+
 
 
 LEETCODE 238
@@ -49,8 +54,8 @@ public:
         }
         return answer;
 
-T.C= n2(n square)
-S.C= 0(1)
+T.C= n^2(n square)
+S.C= 0(1) (because no new data structure created)
         
         
     }
@@ -58,6 +63,7 @@ S.C= 0(1)
 
 
 ---OPTIMISED APPROACH---
+PREFIX AND POSTFIX/SUFFIX PRODUCT APPROACH
 
 class Solution {
 public:
