@@ -22,6 +22,8 @@ public:
 
 
 //BRUTEFORCE TECHNIQUE
+T.C 0(n^2)
+S.C 0(1)
 
 class Solution {
 public:
@@ -39,6 +41,8 @@ public:
 };
 
 //OPTIMIZED TECHNIQUE
+T.C. O(n)    (pronounced as big of N)
+S.C. 0(1)
 
 class Solution {
 public:
@@ -58,6 +62,10 @@ public:
         return maxSum;
     }
 };
+
+
+int maxSum=INT_MIN;
+we did not initialize it with 0 because the sum of integers in array may be negative and 0 is greater than that. INT_MIN means it stores the minimal possible value of integer.
 
 
 //Program 3
