@@ -1,0 +1,104 @@
+LEETCODE 876
+FIND THE MIDDLE OF A LINKED LIST
+
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* slow= head;
+        ListNode* fast=head;
+        while(fast!=nullptr && fast->next!=nullptr){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        return slow;
+    }
+};
+
+LEETCODE 141
+FIND IF A LINKED LIST HAS A CYCLE
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* slow= head;
+        ListNode* fast=head;
+        while(fast!=nullptr && fast->next!=nullptr){
+            slow=slow->next;
+            fast=fast->next->next;
+            if (slow==fast){
+                return true;
+            }
+            
+                
+            }
+        return false;
+        }
+    };
+
+LEETCODE 142
+
+class Solution {
+public:
+    ListNode* detectCycle(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if (slow == fast) {
+                slow = head;
+                while (slow != fast) {
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+                return slow;
+            }
+        }
+        return nullptr;
+    }
+};
+
+
+LEETCODE 160
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* A=headA;
+        ListNode* B = headB;
+        while (A!=B){
+            A= (A==nullptr)? headB : A->next;
+            B=(B==nullptr)? headA : B->next;
+        }
+        return A;
+    }
+};
+
+
+LEETCODE 2095
+DELETE MIDDLE ELEMENT
+
+class Solution {
+public:
+    ListNode* deleteMiddle(ListNode* head) {
+       ListNode* fast=head;
+       ListNode* slow=head;
+       ListNode* prev=head;
+       if (head==nullptr || head->next==nullptr){
+        return nullptr;
+       }
+       while(fast!=nullptr && fast->next!=nullptr){
+        fast=fast->next->next;
+        prev=slow;
+        slow=slow->next;
+        
+       } 
+       prev-> next=slow->next;
+
+       return head;
+       
+
+
+    }
+};
