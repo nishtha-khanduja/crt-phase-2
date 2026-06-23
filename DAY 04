@@ -1,1 +1,129 @@
+//Program 1
+//Process string with special operations I (leetcode 3612)
 
+
+class Solution {
+public:
+    string result;
+    string processStr(string s) {
+        for(char i:s){ //here i is traversing s one character at a time
+            if(islower(i)){
+                result.push_back(i);
+            }else if(i=='#'){
+                result=result+result;
+            }else if(i=='%'){
+                reverse(result.begin(),result.end());
+            }else if(i=='*'){
+                if(!result.empty()){
+                    result.pop_back();
+                }
+            }
+        }
+        return result;
+    }
+};
+
+
+//Program 2
+//Binary Search
+
+
+#include<iostream>
+using namespace std;
+#include <vector>
+
+int binarySearch(vector<int> &arr,int target){
+    int low=0;
+    int high=arr.size()-1;
+    
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        
+        if(arr[mid]==target){
+            return mid;
+        }
+        
+        if(arr[mid]>target){
+            high=mid-1;
+        }else{
+            low=mid+1;
+        }
+        
+    }
+    return -1;
+}
+
+int main(){
+    vector<int> arr ={10,20,30,40,50,60};
+    int target =50;
+    int result=binarySearch(arr,target);
+    if(result==-1){
+        cout<<"Element not found";
+    }else{
+        cout<<"Element found at index: "<<result;
+    }
+    return 0;
+}
+
+
+//Program 3
+//Ceil in a sorted array(GEEKS FOR GEEKS)
+
+Given a sorted array arr[] and an integer x, find the index (0-based) of the smallest element in arr[] that is
+greater than or equal to x. This element is called the ceil of x. If such an element does not exist, return -1.
+
+Examples
+
+Input: arr[] = [1, 2, 8, 10, 11, 12, 19], x = 5
+Output: 2
+Explanation: Smallest number greater than 5 is 8, whose index is 2.
+Input: arr[] = [1, 2, 8, 10, 11, 12, 19], x = 20
+Output: -1
+Explanation: No element greater than 20 is found. So output is -1.
+
+
+class Solution {
+  public:
+    int findCeil(vector<int>& arr, int x) {
+        // code here
+        int low=0;
+        int high=arr.size()-1;
+        int ans=-1;
+        
+        while(low<=high){
+            int mid= low +(high-low)/2;
+            
+            if(arr[mid]>=x){
+                ans=mid;
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+};
+
+
+//Program 4
+//Find peak element(LEETCODE 162)
+
+
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int low=0;
+        int high=nums.size()-1;
+
+        while(low<high){
+            int mid=low+(high-low)/2;
+
+             if(nums[mid]>nums[mid+1]){
+                high= mid;
+            }else{
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+};
